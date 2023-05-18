@@ -1,6 +1,6 @@
 class Solution:
 
-    def f(self, x, nums,check,dp):
+    def f(self, x, nums,check):
         # print(x,check,dp)
         if check[len(nums)-1]:
             return
@@ -8,12 +8,11 @@ class Solution:
             if x+i >= len(nums): continue
             if check[x+i]: continue
             check[x+i]=True
-            self.f(x+i,nums,check,dp)
+            self.f(x+i,nums,check)
 
     def canJump(self, nums: List[int]) -> bool:
         check = [False] * len(nums)
-        dp = [0] * len(nums)
         check[0]=True
-        self.f(0,nums,check,dp)
+        self.f(0,nums,check)
         return check[len(nums)-1]
         
